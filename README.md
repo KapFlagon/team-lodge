@@ -1,2 +1,2 @@
-# team-lodge
+# Team Lodge
 Team Lodge
