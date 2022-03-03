@@ -15,12 +15,13 @@ public class UserUnitTests {
         String email = "jamesdoyle@mail.com";
         String firstName = "james";
         String lastName = "Doyle";
-        User user = new User(email, firstName, lastName);
+        Contact primaryEmail = new Contact(ContactType.EMAIL, email);
+        User user = new User(primaryEmail, firstName, lastName);
         assertAll(
-                () -> assertNotNull(user.getId(), "Id is null"),
-                () -> assertEquals(user.getEmail(), email),
-                () -> assertEquals(user.getFirstName(), firstName),
-                () -> assertEquals(user.getLastName(), lastName)
+                //() -> assertNotNull(user.getId(), "Id is null"),
+                () -> assertEquals(primaryEmail, user.getPrimaryEmail()),
+                () -> assertEquals(firstName, user.getFirstName()),
+                () -> assertEquals(lastName, user.getLastName())
         );
     }
 
