@@ -27,17 +27,31 @@ hs_err_pid*
 replay_pid*
 
 
+# Spring boot initializer 
+# -----------------------
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+
 # Intellij Specific 
 # -----------------
 
-.idea/**
-out/**
-*.iml
-.gradle/**
-**/build/**
 gradlew.bat
 gradlew
-!gradle-wrapper.jar
+
+.idea/
+*.iws
+*.iml
+*.ipr
+out/**
+!**/src/main/**/out/
+!**/src/test/**/out/
+design/
+gradle/
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
