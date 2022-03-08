@@ -29,9 +29,6 @@ public class User {
 
     private List<Address> addressList;
 
-    public Contact getPrimaryPhone() {
-        return primaryPhone;
-    }
 
 
     // Constructors
@@ -44,6 +41,11 @@ public class User {
         this.lastName = lastName;
     }
 
+    public User(Contact primaryEmail, Contact primaryPhone, String firstName, String lastName) {
+        this(primaryEmail, firstName, lastName);
+        this.primaryPhone = primaryPhone;
+    }
+
 
     // Getters and Setters
     public Integer getId() {
@@ -54,12 +56,40 @@ public class User {
         return primaryEmail;
     }
 
+    public void setPrimaryEmail(Contact primaryEmail) {
+        if(primaryEmail.getType() == ContactType.EMAIL) {
+            this.primaryEmail = primaryEmail;
+        } else {
+            throw new IllegalArgumentException("Primary e-mail must be of type 'E-mail'.");
+        }
+    }
+
+    public Contact getPrimaryPhone() {
+        return primaryPhone;
+    }
+
+    public void setPrimaryPhone(Contact primaryPhone) {
+        if(primaryPhone.getType() == ContactType.EMAIL) {
+            throw new IllegalArgumentException("Primary phone must be of type 'Mobile' or 'Landline'.");
+        } else {
+            this.primaryPhone = primaryPhone;
+        }
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 
