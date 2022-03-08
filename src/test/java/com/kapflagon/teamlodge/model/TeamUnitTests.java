@@ -37,4 +37,31 @@ public class TeamUnitTests {
         );
     }
 
+    @Test
+    void changeTeamOwner() {
+        User oldOwner = new User( new Contact( ContactType.EMAIL, "0123456"), "Jay", "Doe");
+        User newOwner = new User( new Contact( ContactType.EMAIL, "7891012"), "Sam", "Din");
+        Team team = new Team("Seniors Division 2", oldOwner);
+        team.setOwner(newOwner);
+
+        assertAll(
+                () -> assertNotEquals(oldOwner, team.getOwner()),
+                () -> assertEquals(newOwner, team.getOwner())
+        );
+    }
+
+    @Test
+    void changeTeamName() {
+        User owner = new User( new Contact( ContactType.EMAIL, "0123456"), "Jay", "Doe");
+        String oldTeamName = "Seniors Division 2";
+        String newTeamName = "Juniors Division 1";
+        Team team = new Team(oldTeamName, owner);
+        team.setName(newTeamName);
+
+        assertAll(
+                () -> assertNotEquals(oldTeamName, team.getName()),
+                () -> assertEquals(newTeamName, team.getName())
+        );
+    }
+
 }
